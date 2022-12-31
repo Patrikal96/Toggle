@@ -1,0 +1,60 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #2b2b2b;
+    //justificar su contenido
+    display: flex;
+    justify-content: center; //de derecha a izquiera
+    align-items: center; // de arriba  a bajo
+    flex-direction: column; //se comporte como una columna
+    min-height: 100vh; // que se adapte a tu navegador
+    transition: 0.5s; //para que no haya un cambio brusco
+    //TOGGLE: SIGNIFICA PALANCA
+    &.active {
+        // a traves de JavaScript asigna automaticamente la clase Active
+        background-color: cornsilk;
+    }
+}
+
+#toggle {
+    position: relative;
+    display: block; // hace que el comportamiento del elemento sea como un bloque.
+    width: 320px;
+    height: 160px;
+    border-radius: 160px;
+    background-color: #222; //es interno
+    transition: 0.5s; //un cambio de tema a claro para que no sea brusco
+    box-shadow: inset 0 8px 60px rgba(0, 0, 0, 0.1), inset 0 8px 8px rgba(0, 0, 0, 0.1),
+        inset 0 -4px 4px rgba(0, 0, 0, 0.1);
+    //inset: la sombra va hacia dentro
+
+    .indicator {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 160px;
+        height: 160px;
+        border-radius: 50%; //para que que comporte como una circunferencia la mitad
+        background: linear-gradient(to bottom, #4444 /* arriba*/, #222 /*abajo*/); //para aparecer el bottom
+        cursor: pointer;
+        transform: scale(0.9);
+        box-shadow: 0px 8px 40px rgb(0, 0, 0, 0.5), inset 0px 4px 4px rgba(255, 255, 255, 0.2),
+            inset 0 -4px 4px rgba(255, 255, 255, 0.2);
+        transition: 0.5s;
+    }
+    &.active {
+        background: cornsilk;
+        box-shadow: inset 0 2px 60px rgba(0, 0, 0, 0.1), inset 0 2px 8px rgba(0, 0, 0, 0.1),
+            inset 0 -4px 8px rgb(0, 0, 0, 0.5);
+        .indicator {
+            left: 160px; // va empujar hacia la derecha
+            box-shadow: inset 0 8px 20px rgba(0, 0, 0, 0.1), inset 0 4px 4px rgba(255, 255, 255, 1),
+                inset 0 -4px 4px rgba(255, 255, 255, 1);
+                background: linear-gradient(to bottom, #eaeaea, #f9f9f9);
+        }
+    }
+}
